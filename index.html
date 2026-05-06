@@ -9,21 +9,10 @@
 
   <link rel="icon" href="logo.png?v=4" />
 
-  <meta property="og:title" content="Luply - Coming Soon" />
-  <meta property="og:description" content="Scambia ciò che non usi. Trova ciò che desideri." />
-  <meta property="og:image" content="https://luply.app/logo.png?v=4" />
-  <meta property="og:url" content="https://luply.app" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Luply - Coming Soon" />
-  <meta name="twitter:description" content="Scambia ciò che non usi. Trova ciò che desideri." />
-  <meta name="twitter:image" content="https://luply.app/logo.png?v=4" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -47,16 +36,12 @@
       background: rgba(255, 255, 255, 0.42);
       box-shadow: 0 24px 80px rgba(244, 163, 0, 0.16);
       backdrop-filter: blur(12px);
-      animation: fadeIn 0.8s ease-out;
     }
 
     .logo {
       width: 320px;
       max-width: 82%;
-      height: auto;
       margin-bottom: 26px;
-      filter: drop-shadow(0 12px 24px rgba(255, 122, 0, 0.20));
-      animation: logoPop 0.9s ease-out;
     }
 
     .badge {
@@ -68,22 +53,18 @@
       color: #d97706;
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.3px;
     }
 
     h1 {
       font-size: clamp(42px, 7vw, 72px);
-      line-height: 0.95;
       margin: 0;
       font-weight: 800;
-      letter-spacing: -2px;
     }
 
     p {
       margin: 22px auto 0;
       color: #686868;
-      font-size: clamp(19px, 2.2vw, 23px);
-      line-height: 1.45;
+      font-size: 20px;
       max-width: 460px;
     }
 
@@ -92,80 +73,38 @@
       display: flex;
       gap: 10px;
       max-width: 420px;
-      width: 100%;
     }
 
     input {
       flex: 1;
-      border: 1px solid rgba(244, 163, 0, 0.35);
       border-radius: 999px;
-      padding: 15px 18px;
-      font-size: 15px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.85);
+      padding: 15px;
+      border: 1px solid #ddd;
     }
 
     button {
       border: none;
       border-radius: 999px;
       padding: 15px 22px;
-      font-size: 15px;
-      font-weight: 700;
+      font-weight: bold;
       cursor: pointer;
       color: white;
       background: linear-gradient(135deg, #F4A300, #FF7A00);
-      box-shadow: 0 12px 24px rgba(255, 122, 0, 0.25);
     }
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .success { color: green; }
+    .error { color: red; }
 
     .small {
       margin-top: 24px;
       font-size: 14px;
       color: #9a8f7f;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes logoPop {
-      from {
-        opacity: 0;
-        transform: scale(0.94);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .card {
-        padding: 36px 22px;
-        border-radius: 28px;
-      }
-
-      .logo {
-        width: 260px;
-      }
-
-      h1 {
-        letter-spacing: -1px;
-      }
-
-      .waitlist {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -178,18 +117,42 @@
 
     <h1>Coming Soon</h1>
 
-    <p>
-      Scambia ciò che non usi. Trova ciò che desideri.
-    </p>
+    <p>Scambia ciò che non usi. Trova ciò che desideri.</p>
 
-    <form class="waitlist">
-      <input type="email" placeholder="Lascia la tua email" />
+    <form class="waitlist" onsubmit="subscribe(event)">
+      <input id="email" type="email" placeholder="Lascia la tua email" required />
       <button type="submit">Avvisami</button>
     </form>
 
-    <div class="small">
-      Luply.app
-    </div>
+    <div id="success" class="message success">✅ Email salvata!</div>
+    <div id="error" class="message error">❌ Errore, riprova.</div>
+
+    <div class="small">Luply.app</div>
   </main>
+
+  <script>
+    const supabase = window.supabase.createClient(
+      "https://kgdjjmcsvegzjpocypxv.supabase.co",
+      "sb_publishable_GltiBF6Aci22_c6jnrI1bA_19lvUmJD"
+    );
+
+    async function subscribe(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+
+      const { error } = await supabase
+        .from("landing_waitlist")
+        .insert([{ email }]);
+
+      if (error) {
+        document.getElementById("error").style.display = "block";
+      } else {
+        document.getElementById("success").style.display = "block";
+        document.getElementById("email").value = "";
+      }
+    }
+  </script>
+
 </body>
 </html>
