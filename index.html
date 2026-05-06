@@ -1,58 +1,128 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Luply</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luply | Coming Soon</title>
+  <meta name="description" content="Luply è la nuova app per scambiare ciò che non usi con ciò che desideri." />
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #FFF6E5;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at top, #fffaf0 0%, #fff6e5 45%, #f8ead2 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #2e2e2e;
       text-align: center;
+      padding: 24px;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    .card {
+      max-width: 560px;
+      width: 100%;
+      padding: 44px 28px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.38);
+      box-shadow: 0 24px 80px rgba(244, 163, 0, 0.16);
+      backdrop-filter: blur(12px);
+      animation: fadeIn 0.8s ease-out;
     }
 
-    img {
-      width: 280px; /* 🔥 logo più grande */
-      max-width: 80%;
-      margin-bottom: 10px;
+    .logo {
+      width: 320px;
+      max-width: 82%;
+      height: auto;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 12px 24px rgba(255, 122, 0, 0.18));
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(244, 163, 0, 0.13);
+      color: #d97706;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
     h1 {
-      font-size: 42px; /* 🔥 più impatto */
-      color: #2E2E2E;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 0.95;
       margin: 0;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -2px;
     }
 
     p {
-      margin-top: 5px;
-      color: #777;
-      font-size: 18px;
-      max-width: 300px;
-      line-height: 1.4;
+      margin: 22px auto 0;
+      color: #686868;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.45;
+      max-width: 430px;
+    }
+
+    .small {
+      margin-top: 28px;
+      font-size: 14px;
+      color: #9a8f7f;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 34px 22px;
+        border-radius: 26px;
+      }
+
+      .logo {
+        width: 250px;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <img src="logo.png?v=2" alt="Luply" />
+  <main class="card">
+    <img class="logo" src="logo.png?v=3" alt="Luply" />
+
+    <div class="badge">App in arrivo</div>
+
     <h1>Coming Soon</h1>
-    <p>La nuova app per scambiare ciò che non usi.</p>
-  </div>
+
+    <p>
+      La nuova app per scambiare ciò che non usi con ciò che desideri.
+    </p>
+
+    <div class="small">
+      Luply.app
+    </div>
+  </main>
 </body>
 </html>
