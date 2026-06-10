@@ -3,183 +3,535 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luply | Coming Soon</title>
-  <meta name="description" content="Scambia ciò che non usi. Trova ciò che desideri." />
-  <link rel="icon" href="logo.png?v=5" />
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <title>Luply | Scambia ciò che non usi</title>
+  <meta name="description" content="Luply è l’app per scambiare oggetti vicino a te. Swipe, match e scambia ciò che non usi con ciò che desideri." />
+  <link rel="icon" href="logo.png?v=5" />
 
   <style>
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at top, #fffaf0 0%, #fff6e5 45%, #f8ead2 100%);
+      background: #fff6e5;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color: #2e2e2e;
-      text-align: center;
-      padding: 24px;
     }
 
-    .card {
-      max-width: 620px;
-      width: 100%;
-      padding: 48px 30px;
-      border-radius: 34px;
-      background: rgba(255, 255, 255, 0.42);
-      box-shadow: 0 24px 80px rgba(244, 163, 0, 0.16);
-      backdrop-filter: blur(12px);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 24px 22px 54px;
+      text-align: center;
+      background: radial-gradient(circle at top, #fffaf0 0%, #fff6e5 50%, #f8ead2 100%);
     }
 
     .logo {
-      width: 320px;
-      max-width: 82%;
-      margin-bottom: 26px;
+      width: 340px;
+      max-width: 90%;
+      display: block;
+      margin: 0 auto 8px;
     }
 
     .badge {
       display: inline-block;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
       padding: 8px 16px;
       border-radius: 999px;
       background: rgba(244, 163, 0, 0.14);
       color: #d97706;
       font-size: 14px;
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: clamp(42px, 7vw, 72px);
-      margin: 0;
       font-weight: 800;
     }
 
-    p {
-      margin: 22px auto 0;
-      color: #686868;
-      font-size: 20px;
-      max-width: 460px;
+    h1 {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: clamp(34px, 3.5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+      font-weight: 850;
     }
 
-    .waitlist {
-      margin: 30px auto 0;
-      display: flex;
-      gap: 10px;
-      max-width: 420px;
+    .subtitle {
+      max-width: 800px;
+      margin: 24px auto 0;
+      color: #666;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.45;
     }
 
-    input {
-      flex: 1;
-      border: 1px solid rgba(244, 163, 0, 0.35);
-      border-radius: 999px;
-      padding: 15px 18px;
-      font-size: 15px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.85);
+    .actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.store-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.store-badge {
+  min-width: 190px;
+  min-height: 58px;
+  padding: 10px 18px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  box-shadow: 0 12px 28px rgba(90, 60, 0, 0.12);
+}
+
+.store-badge.active {
+  background: #111;
+  color: white;
+}
+
+.store-badge.disabled {
+  background: rgba(255, 255, 255, 0.75);
+  color: #7a6a55;
+  border: 1px solid rgba(244, 163, 0, 0.22);
+}
+
+.store-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.store-badge small {
+  display: block;
+  font-size: 11px;
+  opacity: 0.78;
+  line-height: 1.1;
+}
+
+.store-badge strong {
+  display: block;
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 25px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.secondary {
+  background: white;
+  color: #6f4a00;
+  border: 1px solid rgba(244, 163, 0, 0.28);
+}
+
+.small-button {
+  margin-top: 16px;
+  }
+
+  .mini-proof {
+  margin-top: 16px;
+  color: #8a7a62;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+    section {
+      padding: 58px 22px;
     }
 
-    button {
-      border: none;
-      border-radius: 999px;
-      padding: 15px 22px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      color: white;
-      background: linear-gradient(135deg, #F4A300, #FF7A00);
-      box-shadow: 0 12px 24px rgba(255, 122, 0, 0.25);
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .message {
-      margin-top: 18px;
-      font-size: 15px;
-      font-weight: 600;
-      display: none;
+    .section-title {
+      margin: 0 auto 14px;
+      text-align: center;
+      font-size: clamp(32px, 4.5vw, 46px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -1px;
     }
 
-    .success { color: #188038; }
-    .error { color: #c62828; }
+    .section-text {
+      max-width: 720px;
+      margin: 0 auto 20px;
+      text-align: center;
+      color: #666;
+      font-size: 18px;
+      line-height: 1.55;
+    }
 
-    .small {
-      margin-top: 24px;
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .phone-shot {
+      width: 100%;
+      max-width: 185px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 22px;
+      box-shadow: 0 14px 34px rgba(90, 60, 0, 0.16);
+      background: white;
+    }
+
+    .steps,
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .box {
+      padding: 26px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 16px 44px rgba(120, 80, 0, 0.08);
+    }
+
+   .box h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  color: #222;
+  border-left: 4px solid #F4A300;
+  padding-left: 12px;
+}
+
+    .box p {
+      margin: 0;
+      color: #696969;
+      font-size: 15.5px;
+      line-height: 1.5;
+    }
+
+    .number {
+      color: #F4A300;
       font-size: 14px;
-      color: #9a8f7f;
+      font-weight: 900;
+      margin-bottom: 8px;
     }
 
-    @media (max-width: 520px) {
-      .card { padding: 36px 22px; }
-      .logo { width: 260px; }
-      .waitlist { flex-direction: column; }
-      button { width: 100%; }
+    .faq {
+      max-width: 820px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      padding: 20px 22px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 12px 34px rgba(120, 80, 0, 0.06);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    details p {
+      margin: 12px 0 0;
+      color: #686868;
+      line-height: 1.5;
+    }
+.social-proof {
+  margin: 18px auto 0;
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.final-cta {
+  padding: 72px 22px;
+}
+
+.final-card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 46px 28px;
+  border-radius: 34px;
+  text-align: center;
+  background: linear-gradient(135deg, #111 0%, #2b2418 55%, #ff7a00 180%);
+  color: white;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+}
+
+.final-card h2 {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  font-weight: 900;
+}
+
+.final-card p {
+  max-width: 620px;
+  margin: 18px auto 26px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.final-store {
+  margin: 0 auto;
+}
+    footer {
+      padding: 34px 22px 44px;
+      text-align: center;
+      color: #9a8f7f;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #8a6a28;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .screenshots {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .phone-shot {
+        max-width: 230px;
+      }
+
+      .steps,
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-top: 36px;
+      }
+
+      .logo {
+        width: 220px;
+      }
+
+      .screenshots {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
+  <header class="hero">
     <img class="logo" src="logo.png?v=5" alt="Luply" />
 
-    <div class="badge">App in arrivo</div>
+    <div class="badge">Disponibile su App Store</div>
 
-    <h1>Coming Soon</h1>
+    <h1>
+      Scambia ciò che non usi.<br> 
+      Trova ciò che desideri.
+    </h1>
 
-    <p>Scambia ciò che non usi. Trova ciò che desideri.</p>
+    <p class="subtitle">
+      Luply è l’app per scambiare oggetti vicino a te in modo semplice, veloce e divertente.
+      Pubblica un prodotto, fai swipe e crea nuovi scambi locali.
+    </p>
 
-    <form id="waitlistForm" class="waitlist">
-      <input id="email" type="email" placeholder="Lascia la tua email" required />
-      <button id="submitButton" type="submit">Avvisami</button>
-    </form>
+    <div class="store-actions">
+  <a class="store-badge active" href="https://apps.apple.com/it/app/luply/id6771774860" target="_blank" rel="noopener">
+    <span class="store-icon"></span>
+    <span>
+      <small>Scarica su</small>
+      <strong>App Store</strong>
+    </span>
+  </a>
 
-    <div id="success" class="message success">✅ Perfetto! Ti avviseremo al lancio.</div>
-    <div id="error" class="message error">❌ Errore, riprova tra poco.</div>
+  <div class="store-badge disabled">
+    <span class="store-icon">▶</span>
+    <span>
+      <small>In arrivo su</small>
+      <strong>Google Play</strong>
+    </span>
+  </div>
+</div>
 
-    <div class="small">Luply.app</div>
-  </main>
+<a class="button secondary small-button" href="#come-funziona">
+  Come funziona
+</a>
 
-  <script>
-    const supabaseClient = window.supabase.createClient(
-      "https://kgdjjmcsvegzjpocypxv.supabase.co",
-      "sb_publishable_GltiBF6Aci22_c6jnrI1bA_19lvUmJD"
-    );
+<div class="mini-proof">⭐ 5 stelle su App Store • Android in arrivo</div>
+  </header>
 
-    const form = document.getElementById("waitlistForm");
-    const emailInput = document.getElementById("email");
-    const button = document.getElementById("submitButton");
-    const success = document.getElementById("success");
-    const errorBox = document.getElementById("error");
+  <section>
+    <div class="inner">
+      <h2 class="section-title">Guarda Luply in azione</h2>
+      <p class="section-text">
+        Un’esperienza semplice: pubblichi un oggetto, scopri prodotti con lo swipe,
+        fai match e ti accordi in chat per lo scambio.
+      </p>
 
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
+      <div class="screenshots">
+        <img class="phone-shot" src="screenshots/screen1.png" alt="Schermata Luply 1" />
+        <img class="phone-shot" src="screenshots/screen2.png" alt="Schermata Luply 2" />
+        <img class="phone-shot" src="screenshots/screen3.png" alt="Schermata Luply 3" />
+        <img class="phone-shot" src="screenshots/screen4.png" alt="Schermata Luply 4" />
+        <img class="phone-shot" src="screenshots/screen5.png" alt="Schermata Luply 5" />
+        <img class="phone-shot" src="screenshots/screen6.png" alt="Schermata Luply 6" />
+      </div>
+    </div>
+  </section>
 
-      success.style.display = "none";
-      errorBox.style.display = "none";
+  <section id="come-funziona">
+    <div class="inner">
+      <h2 class="section-title">Swipe. Match. Trade.</h2>
+      <p class="section-text">
+        Luply non è un marketplace classico. Non compri, non vendi e non scorri infinite liste:
+        scopri un oggetto alla volta e scambi solo quando c’è interesse reciproco.
+      </p>
 
-      const email = emailInput.value.trim().toLowerCase();
+      <div class="steps">
+        <div class="box">
+          <div class="number">01</div>
+          <h3>Pubblica un oggetto</h3>
+          <p>Carica ciò che non usi più e indica cosa ti piacerebbe ricevere in cambio.</p>
+        </div>
 
-      if (!email) return;
+        <div class="box">
+          <div class="number">02</div>
+          <h3>Scopri con lo swipe</h3>
+          <p>Guarda prodotti vicini a te e scegli se passare o mostrare interesse.</p>
+        </div>
 
-      button.disabled = true;
-      button.textContent = "Invio...";
+        <div class="box">
+          <div class="number">03</div>
+          <h3>Fai match e scambia</h3>
+          <p>Quando l’interesse è reciproco, nasce il match e potete accordarvi in chat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      const { error } = await supabaseClient
-        .from("landing_waitlist")
-        .insert([{ email: email }]);
+  <section>
+    <div class="inner">
+      <h2 class="section-title">Perché usare Luply?</h2>
+      <p class="section-text">
+        Meno oggetti dimenticati, più scambi utili.<br> 
+        Luply nasce per dare nuova vita alle cose che hai già.
+      </p>
 
-      button.disabled = false;
-      button.textContent = "Avvisami";
+      <div class="features">
+        <div class="box">
+          <h3>Scambio, non vendita</h3>
+          <p>Dai valore agli oggetti inutilizzati senza doverli mettere in vendita.</p>
+        </div>
 
-      if (error) {
-        console.error(error);
-        errorBox.style.display = "block";
-      } else {
-        success.style.display = "block";
-        emailInput.value = "";
-      }
-    });
-  </script>
+        <div class="box">
+          <h3>Vicino a te</h3>
+          <p>Scopri prodotti nella tua zona e organizza scambi più semplici e locali.</p>
+        </div>
+
+        <div class="box">
+          <h3>Veloce e divertente</h3>
+          <p>Un prodotto alla volta, swipe rapido e match solo quando c’è interesse reciproco.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner">
+      <h2 class="section-title">Domande frequenti</h2>
+
+      <div class="faq">
+        <details>
+          <summary>Luply è gratuita?</summary>
+          <p>Sì, Luply è gratuita nella sua versione attuale.</p>
+        </details>
+
+        <details>
+          <summary>Posso vendere prodotti su Luply?</summary>
+          <p>Luply nasce per lo scambio di oggetti, non come marketplace di vendita classico.</p>
+        </details>
+
+        <details>
+          <summary>Come funziona il match?</summary>
+          <p>Quando due utenti mostrano interesse reciproco per uno scambio, si crea un match e si può iniziare a chattare.</p>
+        </details>
+
+        <details>
+          <summary>Android è disponibile?</summary>
+          <p>La versione Android è in arrivo. Al momento Luply è disponibile su App Store.</p>
+        </details>
+
+        <details>
+          <summary>Come posso contattare il supporto?</summary>
+          <p>Puoi scrivere a support@luply.app.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+<section class="final-cta">
+  <div class="inner">
+    <div class="final-card">
+      <h2>Pronto a fare il tuo primo scambio?</h2>
+      <p>
+        Scarica Luply, pubblica un oggetto che non usi più e scopri cosa puoi trovare vicino a te.
+      </p>
+
+      <a class="store-badge active final-store" href="https://apps.apple.com/it/app/luply/id6771774860" target="_blank" rel="noopener">
+        <span class="store-icon"></span>
+        <span>
+          <small>Scarica su</small>
+          <strong>App Store</strong>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    <strong>Luply.app</strong>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:support@luply.app">Supporto</a>
+    </div>
+  </footer>
 </body>
 </html>
