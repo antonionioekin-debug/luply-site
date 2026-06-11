@@ -176,23 +176,31 @@
       line-height: 1.55;
     }
 
-    .screenshots {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 18px;
-      align-items: start;
-      margin-top: 28px;
-    }
+    .screenshot-carousel {
+  position: relative;
+  margin-top: 28px;
+}
 
-    .phone-shot {
-      width: 100%;
-      max-width: 185px;
-      display: block;
-      margin: 0 auto;
-      border-radius: 22px;
-      box-shadow: 0 14px 34px rgba(90, 60, 0, 0.16);
-      background: white;
-    }
+.screenshots {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.phone-shot {
+  width: 100%;
+  max-width: 185px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(90, 60, 0, 0.16);
+  background: white;
+}
+
+.carousel-arrow {
+  display: none;
+}
 
     .steps,
     .features {
@@ -345,10 +353,51 @@
       .logo {
         width: 220px;
       }
+      .screenshot-carousel {
+  margin-top: 24px;
+}
 
-      .screenshots {
-        grid-template-columns: 1fr;
-      }
+.screenshots {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 18px;
+  padding: 8px 42px 18px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.phone-shot {
+  min-width: 78%;
+  max-width: 78%;
+  scroll-snap-align: center;
+}
+
+.carousel-arrow {
+  display: flex;
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+
+.carousel-arrow.left {
+  left: 2px;
+}
+
+.carousel-arrow.right {
+  right: 2px;
+}
 
       .button {
         width: 100%;
@@ -406,14 +455,20 @@
         fai match e ti accordi in chat per lo scambio.
       </p>
 
-      <div class="screenshots">
-        <img class="phone-shot" src="screenshots/screen1.png" alt="Schermata Luply 1" />
-        <img class="phone-shot" src="screenshots/screen2.png" alt="Schermata Luply 2" />
-        <img class="phone-shot" src="screenshots/screen3.png" alt="Schermata Luply 3" />
-        <img class="phone-shot" src="screenshots/screen4.png" alt="Schermata Luply 4" />
-        <img class="phone-shot" src="screenshots/screen5.png" alt="Schermata Luply 5" />
-        <img class="phone-shot" src="screenshots/screen6.png" alt="Schermata Luply 6" />
-      </div>
+      <div class="screenshot-carousel">
+  <button class="carousel-arrow left" type="button" onclick="scrollScreenshots(-1)">‹</button>
+
+  <div class="screenshots" id="screenshotsCarousel">
+    <img class="phone-shot" src="screenshots/screen1.png" alt="Schermata Luply 1" />
+    <img class="phone-shot" src="screenshots/screen2.png" alt="Schermata Luply 2" />
+    <img class="phone-shot" src="screenshots/screen3.png" alt="Schermata Luply 3" />
+    <img class="phone-shot" src="screenshots/screen4.png" alt="Schermata Luply 4" />
+    <img class="phone-shot" src="screenshots/screen5.png" alt="Schermata Luply 5" />
+    <img class="phone-shot" src="screenshots/screen6.png" alt="Schermata Luply 6" />
+  </div>
+
+  <button class="carousel-arrow right" type="button" onclick="scrollScreenshots(1)">›</button>
+</div>
     </div>
   </section>
 
@@ -533,5 +588,19 @@
       <a href="mailto:support@luply.app">Supporto</a>
     </div>
   </footer>
+  <script>
+function scrollScreenshots(direction) {
+  const carousel = document.getElementById('screenshotsCarousel');
+
+  if (!carousel) return;
+
+  const amount = carousel.clientWidth * 0.85;
+
+  carousel.scrollBy({
+    left: direction * amount,
+    behavior: 'smooth'
+  });
+}
+</script>
 </body>
 </html>
