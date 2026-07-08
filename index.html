@@ -24,10 +24,49 @@
     }
 
     .hero {
-      padding: 24px 22px 54px;
-      text-align: center;
-      background: radial-gradient(circle at top, #fffaf0 0%, #fff6e5 50%, #f8ead2 100%);
-    }
+  min-height: 92vh;
+  padding: 28px 22px 70px;
+  background:
+    linear-gradient(90deg, rgba(255,246,229,0.98) 0%, rgba(255,246,229,0.92) 35%, rgba(255,246,229,0.25) 68%, rgba(255,246,229,0.05) 100%),
+    url("images/hero.jpg") center right / cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+.hero-quote {
+  display: block;
+  font-size: clamp(24px, 2vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #2b2b2b;
+  margin-bottom: 18px;
+}
+.hero-content {
+  max-width: 620px;
+  text-align: left;
+}
+
+.hero .logo {
+  margin: 0 0 10px;
+  width: 220px;
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 650px;
+}
+
+.hero .subtitle {
+  margin: 24px 0 0;
+  max-width: 560px;
+}
+
+.hero .store-actions {
+  justify-content: flex-start;
+}
+
+.hero .small-button {
+  width: auto;
+}
 
     .logo {
       width: 340px;
@@ -176,6 +215,37 @@
       line-height: 1.55;
     }
 
+    .mission .section-text {
+  max-width: 680px;
+}
+
+.mission .section-text:last-child {
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: #2e2e2e;
+}
+.mission-flow {
+  margin-top: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.mission-flow div {
+  font-size: 30px;
+  font-weight: 800;
+  color: #222;
+}
+.mission-flow .final-step {
+  color: #F4A300;
+}
+
+.mission-flow .arrow {
+  font-size: 22px;
+  color: #F4A300;
+  line-height: 1;
+}
     .screenshot-carousel {
   position: relative;
   margin-top: 28px;
@@ -215,8 +285,15 @@
       border-radius: 26px;
       background: rgba(255, 255, 255, 0.72);
       box-shadow: 0 16px 44px rgba(120, 80, 0, 0.08);
-    }
 
+      transition:
+    transform .28s ease,
+    box-shadow .28s ease;
+    }
+.box:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 22px 55px rgba(120,80,0,.14);
+}
    .box h3 {
   margin: 0 0 8px;
   font-size: 21px;
@@ -246,17 +323,28 @@
       gap: 12px;
     }
 
-    details {
-      padding: 20px 22px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: 0 12px 34px rgba(120, 80, 0, 0.06);
-    }
+   details {
+  padding: 22px 24px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 12px 34px rgba(120,80,0,.06);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+details:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.92);
+  box-shadow:0 18px 42px rgba(120,80,0,.09);
+}
 
     summary {
       cursor: pointer;
       font-weight: 800;
-      font-size: 17px;
+      font-size: 18px;
     }
 
     details p {
@@ -281,14 +369,16 @@
 }
 
 .final-card {
-  max-width: 860px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 46px 28px;
-  border-radius: 34px;
+  padding: 58px 34px;
+  border-radius: 38px;
   text-align: center;
-  background: linear-gradient(135deg, #111 0%, #2b2418 55%, #ff7a00 180%);
+  background:
+    radial-gradient(circle at top right, rgba(255, 122, 0, 0.34), transparent 34%),
+    linear-gradient(135deg, #111 0%, #251f16 58%, #ff7a00 180%);
   color: white;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
 }
 
 .final-card h2 {
@@ -300,11 +390,15 @@
 }
 
 .final-card p {
-  max-width: 620px;
-  margin: 18px auto 26px;
+  max-width: 640px;
+  margin: 18px auto 0;
   color: rgba(255, 255, 255, 0.82);
   font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+.final-card p:last-of-type {
+  margin-bottom: 30px;
 }
 
 .final-store {
@@ -329,7 +423,29 @@
       color: #8a6a28;
       font-weight: 700;
     }
+    .copyright {
+  margin-top: 14px;
+  color: #b0a28f;
+  font-size: 13px;
+}
+    .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
 
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
     @media (max-width: 900px) {
       .screenshots {
         grid-template-columns: repeat(2, 1fr);
@@ -408,48 +524,86 @@
 
 <body>
   <header class="hero">
+  <div class="hero-content">
     <img class="logo" src="logo.png?v=5" alt="Luply" />
 
     <div class="badge">Disponibile su App Store</div>
 
     <h1>
-      Scambia ciò che non usi.<br> 
+      Scambia ciò che non usi.<br>
       Trova ciò che desideri.
     </h1>
 
-    <p class="subtitle">
-      Luply è l’app per scambiare oggetti vicino a te in modo semplice, veloce e divertente.
-      Pubblica un prodotto, fai swipe e crea nuovi scambi locali.
-    </p>
-
+    <p class="hero-description">
+  <span class="hero-quote">
+  Ogni oggetto ha una storia.<br>
+  Con Luply può iniziarne una nuova.
+</span>
+  <br><br>
+  Scambia ciò che non usi con persone vicino a te, attraverso un'esperienza semplice fatta di swipe, match e chat.
+</p>
     <div class="store-actions">
-  <a class="store-badge active" href="https://apps.apple.com/it/app/luply/id6771774860" target="_blank" rel="noopener">
-    <span class="store-icon"></span>
-    <span>
-      <small>Scarica su</small>
-      <strong>App Store</strong>
-    </span>
-  </a>
+      <a class="store-badge active" href="https://apps.apple.com/it/app/luply/id6771774860" target="_blank" rel="noopener">
+        <span class="store-icon"></span>
+        <span>
+          <small>Scarica su</small>
+          <strong>App Store</strong>
+        </span>
+      </a>
 
-  <div class="store-badge disabled">
-    <span class="store-icon">▶</span>
-    <span>
-      <small>In arrivo su</small>
-      <strong>Google Play</strong>
-    </span>
+      <div class="store-badge disabled">
+        <span class="store-icon">▶</span>
+        <span>
+          <small>In arrivo su</small>
+          <strong>Google Play</strong>
+        </span>
+      </div>
+    </div>
+
+    <a class="button secondary small-button" href="#come-funziona">
+      Come funziona
+    </a>
+
   </div>
+</header>
+
+<section class="mission reveal">
+  <div class="inner">
+
+    <h2 class="section-title">Perché esiste Luply?</h2>
+
+<p class="section-text">
+  Ogni giorno milioni di oggetti perfettamente funzionanti vengono dimenticati.
+  Restano chiusi in un armadio, in una cantina o in un garage.
+</p>
+
+<p class="section-text">
+  Non perché abbiano perso valore.
+  Ma perché trovare la persona giusta con cui scambiarli è sempre stato difficile.
+</p>
+
+<p class="section-text">
+  Luply nasce per cambiare questa idea.
+  Non vogliamo creare un altro marketplace, ma un modo semplice per far incontrare persone attraverso gli oggetti.
+</p>
+
+<div class="mission-flow">
+  <div>Uno swipe</div>
+  <div class="arrow">↓</div>
+
+  <div>Un match</div>
+  <div class="arrow">↓</div>
+
+  <div>Una chat</div>
+  <div class="arrow">↓</div>
+
+  <div class="final-step">Uno scambio reale</div>
 </div>
+</section>
 
-<a class="button secondary small-button" href="#come-funziona">
-  Come funziona
-</a>
-
-<div class="mini-proof">⭐ 5 stelle su App Store • Android in arrivo</div>
-  </header>
-
-  <section>
+  <section class="reveal">
     <div class="inner">
-      <h2 class="section-title">Guarda Luply in azione</h2>
+      <h2 class="section-title">Dal primo swipe al tuo primo scambio</h2>
       <p class="section-text">
         Un’esperienza semplice: pubblichi un oggetto, scopri prodotti con lo swipe,
         fai match e ti accordi in chat per lo scambio.
@@ -472,9 +626,9 @@
     </div>
   </section>
 
-  <section id="come-funziona">
+  <section id="come-funziona" class="reveal">
     <div class="inner">
-      <h2 class="section-title">Swipe. Match. Trade.</h2>
+      <h2 class="section-title">Swipe → Match → Scambio</h2>
       <p class="section-text">
         Luply non è un marketplace classico. Non compri, non vendi e non scorri infinite liste:
         scopri un oggetto alla volta e scambi solo quando c’è interesse reciproco.
@@ -502,7 +656,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="inner">
       <h2 class="section-title">Perché usare Luply?</h2>
       <p class="section-text">
@@ -512,82 +666,98 @@
 
       <div class="features">
         <div class="box">
-          <h3>Scambio, non vendita</h3>
-          <p>Dai valore agli oggetti inutilizzati senza doverli mettere in vendita.</p>
+          <h3>Dai nuova vita alle cose</h3>
+          <p>Ogni oggetto dimenticato può tornare utile a qualcuno.
+    Con Luply ciò che non usi più può iniziare una nuova storia.</p>
         </div>
 
         <div class="box">
-          <h3>Vicino a te</h3>
-          <p>Scopri prodotti nella tua zona e organizza scambi più semplici e locali.</p>
+          <h3>Le persone prima degli oggetti</h3>
+          <p>Ogni scambio nasce da un match e da una conversazione.
+    Non compri un oggetto: incontri una persona.</p>
         </div>
 
         <div class="box">
-          <h3>Veloce e divertente</h3>
-          <p>Un prodotto alla volta, swipe rapido e match solo quando c’è interesse reciproco.</p>
+          <h3>Scambia vicino a te</h3>
+          <p>Trova persone della tua zona e organizza scambi semplici,
+    veloci e reali, senza spedizioni e senza complicazioni.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="inner">
-      <h2 class="section-title">Domande frequenti</h2>
-
-      <div class="faq">
-        <details>
-          <summary>Luply è gratuita?</summary>
-          <p>Sì, Luply è gratuita nella sua versione attuale.</p>
-        </details>
-
-        <details>
-          <summary>Posso vendere prodotti su Luply?</summary>
-          <p>Luply nasce per lo scambio di oggetti, non come marketplace di vendita classico.</p>
-        </details>
-
-        <details>
-          <summary>Come funziona il match?</summary>
-          <p>Quando due utenti mostrano interesse reciproco per uno scambio, si crea un match e si può iniziare a chattare.</p>
-        </details>
-
-        <details>
-          <summary>Android è disponibile?</summary>
-          <p>La versione Android è in arrivo. Al momento Luply è disponibile su App Store.</p>
-        </details>
-
-        <details>
-          <summary>Come posso contattare il supporto?</summary>
-          <p>Puoi scrivere a support@luply.app.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-<section class="final-cta">
+  
+<section class="final-cta reveal">
   <div class="inner">
     <div class="final-card">
-      <h2>Pronto a fare il tuo primo scambio?</h2>
-      <p>
-        Scarica Luply, pubblica un oggetto che non usi più e scopri cosa puoi trovare vicino a te.
-      </p>
+     <h2>
+      Ogni scambio inizia con uno swipe.<br>
+      Il prossimo potrebbe essere il tuo.
+      </h2>
+
+<p>
+Scarica Luply, pubblica un oggetto che non usi più e scopri cosa puoi trovare vicino a te.
+</p>
+
 
       <a class="store-badge active final-store" href="https://apps.apple.com/it/app/luply/id6771774860" target="_blank" rel="noopener">
         <span class="store-icon"></span>
         <span>
-          <small>Scarica su</small>
-          <strong>App Store</strong>
+          <small>Scarica</small>
+          <strong>Luply</strong>
         </span>
       </a>
     </div>
   </div>
 </section>
+<section class="reveal faq-section">
+  <div class="inner">
+    <h2 class="section-title">Domande frequenti</h2>
 
-  <footer>
-    <strong>Luply.app</strong>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="mailto:support@luply.app">Supporto</a>
+    <div class="faq">
+      <details>
+        <summary>Luply è gratuita?</summary>
+        <p>Sì. Luply è gratuita nella sua versione attuale.</p>
+      </details>
+
+      <details>
+        <summary>Come funziona uno scambio?</summary>
+        <p>Pubblichi un oggetto, scopri prodotti vicini con lo swipe e mostri interesse. Se anche l’altra persona è interessata, nasce un match e potete accordarvi in chat.</p>
+      </details>
+
+      <details>
+        <summary>Posso vendere prodotti su Luply?</summary>
+        <p>No. Luply nasce per lo scambio, non per la vendita. L’obiettivo è dare nuova vita agli oggetti attraverso persone che possono davvero utilizzarli.</p>
+      </details>
+
+      <details>
+        <summary>Dove avviene lo scambio?</summary>
+        <p>Dopo il match, gli utenti possono organizzarsi direttamente in chat e scegliere insieme il luogo più comodo e adatto per incontrarsi.</p>
+      </details>
+
+      <details>
+        <summary>Android è disponibile?</summary>
+        <p>La versione Android è in arrivo. Al momento Luply è disponibile su App Store.</p>
+      </details>
+
+      <details>
+        <summary>Come posso contattare il supporto?</summary>
+        <p>Puoi scrivere a support@luply.app.</p>
+      </details>
     </div>
-  </footer>
+  </div>
+</section>
+  <footer>
+  <strong>Luply.app</strong>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:support@luply.app">Supporto</a>
+  </div>
+  <div class="copyright">
+    © 2026 Luply. Tutti i diritti riservati.
+  </div>
+</footer>
   <script>
 function scrollScreenshots(direction) {
   const carousel = document.getElementById('screenshotsCarousel');
@@ -601,6 +771,23 @@ function scrollScreenshots(direction) {
     behavior: 'smooth'
   });
 }
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.14
+});
+
+revealElements.forEach((element) => {
+  revealObserver.observe(element);
+});
+
 </script>
 </body>
 </html>
