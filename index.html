@@ -519,6 +519,138 @@ details:hover{
         width: 100%;
       }
     }
+
+
+/* ========================================
+   LUPLY POCKET — HOMEPAGE
+======================================== */
+
+.pocket-preview {
+  padding: 64px 22px;
+}
+
+.pocket-preview-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 38px;
+  background: #111111;
+  color: #FFFFFF;
+  box-shadow: 0 28px 80px rgba(0,0,0,0.18);
+}
+
+.pocket-preview-content {
+  padding: 60px 48px;
+}
+
+.pocket-preview-eyebrow {
+  display: block;
+  margin-bottom: 22px;
+  color: #F4A300;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1.6;
+}
+
+.pocket-preview h2 {
+  margin: 0 0 24px;
+  font-size: clamp(38px, 5vw, 66px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.pocket-preview h2 span {
+  color: #F4A300;
+}
+
+.pocket-preview-description {
+  margin: 0 0 30px;
+  color: #CCCCCC;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.pocket-preview-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: #F4A300;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 800;
+  transition: background .25s ease,
+              transform .25s ease;
+}
+
+.pocket-preview-button:hover {
+  background: #FFB936;
+  transform: translateY(-2px);
+}
+
+.pocket-preview-button:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 4px;
+}
+
+.pocket-preview-note {
+  margin: 22px 0 0;
+  color: #AAAAAA;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.pocket-preview-image {
+  min-width: 0;
+}
+
+.pocket-preview-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 800px) {
+
+  .pocket-preview-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pocket-preview-content {
+    padding: 42px 28px 20px;
+    text-align: center;
+  }
+
+  .pocket-preview-image {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .pocket-preview {
+    padding: 42px 16px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .pocket-preview-button {
+    transition: none;
+  }
+
+  .pocket-preview-button:hover {
+    transform: none;
+  }
+
+}
+
   </style>
 </head>
 
@@ -798,6 +930,60 @@ Scarica Luply, pubblica un oggetto che non usi più e scopri cosa puoi trovare v
     </div>
   </div>
 </section>
+
+
+<!-- LUPLY POCKET -->
+
+<section class="pocket-preview"
+         aria-labelledby="pocket-preview-title">
+
+  <div class="pocket-preview-card">
+
+    <div class="pocket-preview-content">
+
+      <span class="pocket-preview-eyebrow">
+        LUPLY · HARDWARE CONCEPT 001
+      </span>
+
+      <h2 id="pocket-preview-title">
+        Meno distanza.<br>
+        <span>Più incontri.</span>
+      </h2>
+
+      <p class="pocket-preview-description">
+        Scopri Luply Pocket.
+        Un piccolo dispositivo, una nuova visione
+        della tecnologia.
+        Non per restare connessi.
+        Per incontrarsi.
+      </p>
+
+      <a class="pocket-preview-button"
+         href="pocket/">
+        Scopri Luply Pocket &rarr;
+      </a>
+
+      <p class="pocket-preview-note">
+        Concept hardware sperimentale.
+        Non ancora disponibile in commercio.
+      </p>
+
+    </div>
+
+    <div class="pocket-preview-image">
+
+      <img src="pocket/images/search.webp"
+           alt="Render del concept Luply Pocket con la modalità Cerca scambio"
+           loading="lazy">
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FINE LUPLY POCKET -->
+
   <footer>
   <strong>Luply.app</strong>
   <div class="footer-links">
