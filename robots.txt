@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luply.app/sitemap.xml
