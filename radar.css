@@ -1,0 +1,266 @@
+
+/* ========================================
+   LUPLY RADAR — EXPERIENCE
+======================================== */
+
+.luply-radar {
+  padding: 64px 22px;
+}
+
+.radar-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px;
+  border-radius: 38px;
+  overflow: hidden;
+  color: #FFFFFF;
+  background:
+    radial-gradient(
+      ellipse at 75% 45%,
+      rgba(244, 163, 0, 0.13),
+      transparent 55%
+    ),
+    #111111;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.18);
+}
+
+.radar-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.radar-eyebrow {
+  display: block;
+  margin-bottom: 20px;
+  color: #F4A300;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.radar-content h2 {
+  margin: 0 0 24px;
+  font-size: clamp(32px, 4.5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  font-weight: 900;
+}
+
+.radar-content h2 span {
+  color: #F4A300;
+}
+
+.radar-description {
+  color: #CCCCCC;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* VISUALIZZAZIONE RADAR */
+
+.radar-display {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.radar-display svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.radar-ring {
+  fill: none;
+  stroke: #54452D;
+  stroke-width: 1;
+  stroke-dasharray: 3 6;
+}
+
+.radar-axis {
+  stroke: #3D3528;
+  stroke-width: 0.8;
+}
+
+.radar-range {
+  stroke: #F4A300;
+  stroke-width: 1.5;
+  transform-origin: 50% 50%;
+  transform-box: view-box;
+  transform: scale(var(--radar-scale, 0.3));
+  transition: transform 0.45s ease;
+}
+
+.radar-object {
+  opacity: 0.15;
+  transition: opacity 0.4s ease;
+}
+
+.radar-object.is-active {
+  opacity: 1;
+}
+
+.radar-object circle {
+  fill: #24211B;
+  stroke: #645233;
+  stroke-width: 1;
+}
+
+.radar-object.is-active circle {
+  stroke: #F4A300;
+}
+
+.radar-object text {
+  font-size: 17px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.radar-center {
+  fill: #F4A300;
+  filter: drop-shadow(0 0 10px #F4A300);
+}
+
+.radar-pulse {
+  fill: none;
+  stroke: #F4A300;
+  stroke-width: 1.5;
+  transform-origin: 50% 50%;
+  transform-box: view-box;
+  opacity: 0;
+}
+
+@keyframes luplyRadarPulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.radar-pulse.is-pulsing {
+  animation: luplyRadarPulse 1.6s ease-out;
+}
+
+/* CONTROLLI E CONTATORI */
+
+.radar-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.radar-stat {
+  padding: 18px;
+  border: 1px solid #38332B;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.radar-stat small {
+  display: block;
+  color: #BBBBBB;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.radar-stat strong {
+  display: block;
+  margin-top: 6px;
+  color: #F4A300;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.radar-controls label {
+  display: block;
+  margin-bottom: 14px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.radar-slider {
+  display: block;
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  accent-color: #F4A300;
+  cursor: pointer;
+}
+
+.radar-slider:focus-visible {
+  outline: 2px solid #F4A300;
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+.radar-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: #BBBBBB;
+  font-size: 12px;
+}
+
+.radar-note {
+  margin: 28px 0 0;
+  color: #AAAAAA;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* VERSIONE MOBILE */
+
+@media (max-width: 800px) {
+
+  .luply-radar {
+    padding: 42px 16px;
+  }
+
+  .radar-card {
+    padding: 36px 22px;
+    border-radius: 28px;
+  }
+
+  .radar-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .radar-content {
+    text-align: center;
+  }
+
+  .radar-display {
+    max-width: 360px;
+  }
+
+  .radar-stat {
+    padding: 14px 10px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .radar-pulse {
+    animation: none !important;
+  }
+
+  .radar-object,
+  .radar-range {
+    transition: none;
+  }
+
+}

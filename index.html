@@ -693,7 +693,286 @@ details:hover{
 
 }
 
+/* ========================================
+   LUPLY — HERO ANIMATION
+======================================== */
+
+@keyframes luplyHeroEntrance {
+  from {
+    opacity: 0.15;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .hero-content > * {
+    animation: luplyHeroEntrance
+               0.65s cubic-bezier(0.22, 1, 0.36, 1)
+               backwards;
+  }
+
+  .hero-content > .logo {
+    animation-delay: 0s;
+  }
+
+  .hero-content > .badge {
+    animation-delay: 0.07s;
+  }
+
+  .hero-content > h1 {
+    animation-delay: 0.14s;
+  }
+
+  .hero-content > .hero-description {
+    animation-delay: 0.21s;
+  }
+
+  .hero-content > .store-actions {
+    animation-delay: 0.28s;
+  }
+
+  .hero-content > .small-button {
+    animation-delay: 0.35s;
+  }
+
+  .hero-content > :focus-within {
+    animation: none;
+  }
+
+}
+
+
+/* ========================================
+   LUPLY — MISSION FLOW ANIMATION
+======================================== */
+
+@keyframes luplyFlowEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .mission.visible .mission-flow > div {
+    animation: luplyFlowEntrance
+               0.6s cubic-bezier(0.22, 1, 0.36, 1)
+               backwards;
+  }
+
+  .mission-flow > div:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+
+  .mission-flow > div:nth-child(2) {
+    animation-delay: 0.30s;
+  }
+
+  .mission-flow > div:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+
+  .mission-flow > div:nth-child(4) {
+    animation-delay: 0.60s;
+  }
+
+  .mission-flow > div:nth-child(5) {
+    animation-delay: 0.75s;
+  }
+
+  .mission-flow > div:nth-child(6) {
+    animation-delay: 0.90s;
+  }
+
+  .mission-flow > div:nth-child(7) {
+    animation-delay: 1.05s;
+  }
+
+}
+
+.mission-flow .final-step {
+  text-shadow: 0 4px 24px rgba(244, 163, 0, 0.22);
+}
+
+
+/* ========================================
+   LUPLY — SCREENSHOT ANIMATIONS
+======================================== */
+
+.phone-shot {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@keyframes luplyScreenEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+
+  .reveal.visible .phone-shot {
+    animation: luplyScreenEntrance
+               0.65s cubic-bezier(0.22, 1, 0.36, 1)
+               backwards;
+  }
+
+  .phone-shot:nth-child(1) { animation-delay: 0.05s; }
+  .phone-shot:nth-child(2) { animation-delay: 0.12s; }
+  .phone-shot:nth-child(3) { animation-delay: 0.19s; }
+  .phone-shot:nth-child(4) { animation-delay: 0.26s; }
+  .phone-shot:nth-child(5) { animation-delay: 0.33s; }
+  .phone-shot:nth-child(6) { animation-delay: 0.40s; }
+
+}
+
+@media (hover: hover) and (pointer: fine)
+       and (prefers-reduced-motion: no-preference) {
+
+  .phone-shot:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 24px 48px rgba(120, 80, 0, 0.24);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .phone-shot {
+    animation: none;
+    transition: none;
+  }
+
+}
+
+
+/* ========================================
+   LUPLY — PREMIUM MICROINTERACTIONS
+======================================== */
+
+.store-badge,
+.button {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine)
+       and (prefers-reduced-motion: no-preference) {
+
+  .store-badge.active:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+  }
+
+  .button.secondary:hover {
+    transform: translateY(-3px);
+    background-color: #FFFAF0;
+    box-shadow: 0 12px 28px rgba(244,163,0,0.18);
+  }
+
+}
+
+.store-badge.active:active,
+.button:active {
+  transform: scale(0.97);
+}
+
+.store-badge:focus-visible,
+.button:focus-visible {
+  outline: 3px solid #F4A300;
+  outline-offset: 4px;
+}
+
+@keyframes luplyCardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes luplyFaqEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .reveal.visible .steps > .box,
+  .reveal.visible .features > .box {
+    animation: luplyCardEntrance
+               0.6s cubic-bezier(0.22, 1, 0.36, 1)
+               backwards;
+  }
+
+  .steps > .box:nth-child(2),
+  .features > .box:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .steps > .box:nth-child(3),
+  .features > .box:nth-child(3) {
+    animation-delay: 0.24s;
+  }
+
+  .faq details[open] > p {
+    animation: luplyFaqEntrance 0.3s ease;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .store-badge,
+  .button,
+  .box,
+  .faq details {
+    animation: none;
+    transition: none;
+    transform: none !important;
+  }
+
+}
+
+
   </style>
+
+<link rel="stylesheet" href="radar.css">
+<script src="radar.js" defer></script>
+
 </head>
 
 <body>
@@ -876,6 +1155,238 @@ details:hover{
       </div>
     </div>
   </section>
+
+
+<!-- ========================================
+     LUPLY RADAR — EXPERIENCE
+========================================= -->
+
+<section id="luply-radar"
+         class="luply-radar"
+         aria-labelledby="radar-title">
+
+  <div class="radar-card">
+
+    <div class="radar-layout">
+
+      <div class="radar-content">
+
+        <span class="radar-eyebrow">
+          LUPLY RADAR · INTERACTIVE EXPERIENCE
+        </span>
+
+        <h2 id="radar-title">
+          Un mondo di scambi,<br>
+          <span>vicino a te.</span>
+        </h2>
+
+        <p class="radar-description">
+          Le occasioni sono più vicine di quanto pensi.
+          Amplia il tuo raggio di ricerca e immagina
+          quante nuove possibilità di scambio
+          potresti scoprire con Luply.
+        </p>
+
+        <div class="radar-stats">
+
+          <div class="radar-stat">
+            <small>Raggio di ricerca</small>
+            <strong>
+              <output id="radar-distance"
+                      for="radar-slider">15 km</output>
+            </strong>
+          </div>
+
+          <div class="radar-stat">
+            <small>Oggetti dimostrativi</small>
+            <strong>
+              <output id="radar-count"
+                      for="radar-slider">3</output>
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="radar-controls">
+
+          <label for="radar-slider">
+            Modifica il raggio di ricerca
+          </label>
+
+          <input type="range"
+                 id="radar-slider"
+                 class="radar-slider"
+                 min="5"
+                 max="50"
+                 step="5"
+                 value="15">
+
+          <div class="radar-scale-labels">
+            <span>5 km</span>
+            <span>25 km</span>
+            <span>50 km</span>
+          </div>
+
+        </div>
+
+        <p class="radar-note">
+          Esperienza dimostrativa.
+          Gli oggetti visualizzati sono simulati.
+          Non viene utilizzata la tua posizione reale.
+        </p>
+
+      </div>
+
+      <div class="radar-display">
+
+        <svg viewBox="0 0 320 320"
+             aria-hidden="true">
+
+          <defs>
+
+            <radialGradient id="radarGlow">
+              <stop offset="0%"
+                    stop-color="#F4A300"
+                    stop-opacity="0.28"/>
+
+              <stop offset="100%"
+                    stop-color="#F4A300"
+                    stop-opacity="0.04"/>
+            </radialGradient>
+
+          </defs>
+
+          <!-- Coordinate del radar -->
+
+          <path class="radar-axis"
+                d="M20 160 H300 M160 20 V300"/>
+
+          <!-- Cerchi concentrici -->
+
+          <circle class="radar-ring" cx="160" cy="160" r="28"/>
+          <circle class="radar-ring" cx="160" cy="160" r="56"/>
+          <circle class="radar-ring" cx="160" cy="160" r="84"/>
+          <circle class="radar-ring" cx="160" cy="160" r="112"/>
+          <circle class="radar-ring" cx="160" cy="160" r="140"/>
+
+          <!-- Area di ricerca -->
+
+          <circle id="radar-range"
+                  class="radar-range"
+                  cx="160"
+                  cy="160"
+                  r="140"
+                  fill="url(#radarGlow)"/>
+
+          <!-- Impulso luminoso -->
+
+          <circle id="radar-pulse"
+                  class="radar-pulse"
+                  cx="160"
+                  cy="160"
+                  r="42"/>
+
+          <!-- Oggetti dimostrativi -->
+
+          <g class="radar-object is-active"
+             data-distance="5"
+             transform="translate(172 168)">
+            <circle r="11"/>
+            <text>🎧</text>
+          </g>
+
+          <g class="radar-object is-active"
+             data-distance="9"
+             transform="translate(136 169)">
+            <circle r="11"/>
+            <text>📷</text>
+          </g>
+
+          <g class="radar-object is-active"
+             data-distance="13"
+             transform="translate(157 124)">
+            <circle r="11"/>
+            <text>📚</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="19"
+             transform="translate(142 210)">
+            <circle r="11"/>
+            <text>🎸</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="24"
+             transform="translate(105 121)">
+            <circle r="11"/>
+            <text>⌚</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="29"
+             transform="translate(217 103)">
+            <circle r="11"/>
+            <text>🎮</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="33"
+             transform="translate(199 244)">
+            <circle r="11"/>
+            <text>🚲</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="39"
+             transform="translate(71 223)">
+            <circle r="11"/>
+            <text>💡</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="44"
+             transform="translate(118 44)">
+            <circle r="11"/>
+            <text>🎒</text>
+          </g>
+
+          <g class="radar-object"
+             data-distance="47"
+             transform="translate(284 115)">
+            <circle r="11"/>
+            <text>👟</text>
+          </g>
+
+          <!-- Posizione centrale simulata -->
+
+          <circle cx="160"
+                  cy="160"
+                  r="10"
+                  fill="#F4A300"
+                  opacity="0.20"/>
+
+          <circle class="radar-center"
+                  cx="160"
+                  cy="160"
+                  r="5"/>
+
+          <circle cx="160"
+                  cy="160"
+                  r="2"
+                  fill="#FFFFFF"/>
+
+        </svg>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FINE LUPLY RADAR -->
 
   
 <section class="final-cta reveal">
